@@ -1,4 +1,4 @@
-// File: C:\Users\Admin\Downloads\car-booking-site\app\layout.tsx
+// File: D:\Travel_site\car-travel-booking\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

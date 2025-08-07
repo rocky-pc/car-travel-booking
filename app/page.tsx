@@ -35,8 +35,8 @@ const cars: CarType[] = [
     id: '1',
     name: 'Tesla Model 3',
     category: 'Electric',
-    image: '/placeholder.svg?height=200&width=300&text=Tesla+Model+3',
-    pricePerDay: 89,
+  image: '/Tesla_Model_3.jpg',
+    pricePerDay: 8999,
     features: ['Autopilot', 'Premium Audio', 'Supercharging'],
     rating: 4.9,
     reviews: 234,
@@ -49,8 +49,8 @@ const cars: CarType[] = [
     id: '2',
     name: 'BMW X5',
     category: 'SUV',
-    image: '/placeholder.svg?height=200&width=300&text=BMW+X5',
-    pricePerDay: 125,
+    image: '/bmw.jpg',
+    pricePerDay: 12500,
     features: ['All-Wheel Drive', 'Leather Seats', 'Navigation'],
     rating: 4.8,
     reviews: 189,
@@ -63,8 +63,8 @@ const cars: CarType[] = [
     id: '3',
     name: 'Mercedes C-Class',
     category: 'Luxury',
-    image: '/placeholder.svg?height=200&width=300&text=Mercedes+C-Class',
-    pricePerDay: 95,
+    image: '/Mercedes.jpg',
+    pricePerDay: 9500,
     features: ['Premium Interior', 'Advanced Safety', 'Bluetooth'],
     rating: 4.7,
     reviews: 156,
@@ -77,8 +77,8 @@ const cars: CarType[] = [
     id: '4',
     name: 'Toyota Camry',
     category: 'Economy',
-    image: '/placeholder.svg?height=200&width=300&text=Toyota+Camry',
-    pricePerDay: 45,
+    image: '/Toyota_Camry.jpg',
+    pricePerDay: 9500,
     features: ['Fuel Efficient', 'Reliable', 'Spacious'],
     rating: 4.6,
     reviews: 298,
@@ -91,8 +91,8 @@ const cars: CarType[] = [
     id: '5',
     name: 'Audi A4',
     category: 'Luxury',
-    image: '/placeholder.svg?height=200&width=300&text=Audi+A4',
-    pricePerDay: 85,
+    image: '/Audi_A4.jpg',
+    pricePerDay: 8500,
     features: ['Quattro AWD', 'Virtual Cockpit', 'Premium Sound'],
     rating: 4.8,
     reviews: 167,
@@ -105,7 +105,7 @@ const cars: CarType[] = [
     id: '6',
     name: 'Ford Mustang',
     category: 'Sports',
-    image: '/placeholder.svg?height=200&width=300&text=Ford+Mustang',
+    image: '/ford-mustang-shelby.jpg',
     pricePerDay: 110,
     features: ['V8 Engine', 'Sport Mode', 'Premium Audio'],
     rating: 4.9,
@@ -296,7 +296,8 @@ export default function CarBookingSite() {
           </section>
 
           {/* Car Grid */}
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+          {/*increase width size*/}
+<section className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredCars.map((car) => (
                 <Card key={car.id} className={`overflow-hidden hover:shadow-lg transition-shadow ${!car.available ? 'opacity-60' : ''}`}>
@@ -330,7 +331,7 @@ export default function CarBookingSite() {
                         <p className="text-sm text-gray-600">{car.category}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-blue-600">${car.pricePerDay}</div>
+                        <div className="text-2xl font-bold text-blue-600">Rs.{car.pricePerDay}</div>
                         <div className="text-sm text-gray-600">per day</div>
                       </div>
                     </div>
@@ -386,7 +387,7 @@ export default function CarBookingSite() {
       )}
 
       {bookingStep === 2 && selectedCar && (
-        <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<section className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="mb-8">
             <Button variant="ghost" onClick={() => setBookingStep(1)} className="mb-4">
               ← Back to Cars
@@ -435,19 +436,19 @@ export default function CarBookingSite() {
                     <div className="space-y-3">
                       <label className="flex items-center space-x-2">
                         <input type="checkbox" className="rounded" />
-                        <span>GPS Navigation (+$5/day)</span>
+                        <span>GPS Navigation (Rs.5/day)</span>
                       </label>
                       <label className="flex items-center space-x-2">
                         <input type="checkbox" className="rounded" />
-                        <span>Child Safety Seat (+$8/day)</span>
+                        <span>Child Safety Seat (Rs.8/day)</span>
                       </label>
                       <label className="flex items-center space-x-2">
                         <input type="checkbox" className="rounded" />
-                        <span>Additional Driver (+$10/day)</span>
+                        <span>Additional Driver (Rs.10/day)</span>
                       </label>
                       <label className="flex items-center space-x-2">
                         <input type="checkbox" className="rounded" />
-                        <span>Full Insurance Coverage (+$15/day)</span>
+                        <span>Full Insurance Coverage (Rs.15/day)</span>
                       </label>
                     </div>
                   </div>
@@ -503,16 +504,16 @@ export default function CarBookingSite() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span>Car rental:</span>
-                      <span>${calculateTotal()}</span>
+                      <span>Rs.{calculateTotal()}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Taxes & fees:</span>
-                      <span>${Math.round(calculateTotal() * 0.12)}</span>
+                      <span>Rs.{Math.round(calculateTotal() * 0.12)}</span>
                     </div>
                     <Separator />
                     <div className="flex justify-between font-semibold text-lg">
                       <span>Total:</span>
-                      <span>${calculateTotal() + Math.round(calculateTotal() * 0.12)}</span>
+                      <span>Rs.{calculateTotal() + Math.round(calculateTotal() * 0.12)}</span>
                     </div>
                   </div>
 
@@ -563,7 +564,7 @@ export default function CarBookingSite() {
                 </div>
                 <div className="flex justify-between font-semibold">
                   <span>Total Amount:</span>
-                  <span>${calculateTotal() + Math.round(calculateTotal() * 0.12)}</span>
+                  <span>Rs.{calculateTotal() + Math.round(calculateTotal() * 0.12)}</span>
                 </div>
               </div>
             </div>
@@ -620,7 +621,7 @@ export default function CarBookingSite() {
               <div className="space-y-2 text-gray-400">
                 <p>📞 +1 (555) 123-4567</p>
                 <p>✉️ support@driveeasy.com</p>
-                <p>📍 123 Main St, City, State 12345</p>
+                <p>📍 123 Main Street, Cuddalore, Tamil Nadu 607003</p>
               </div>
             </div>
           </div>
